@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Papua New Guinea - Cultural Landmarks</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #72e22b;
+      --primary-dark: #66d625;
+      --text-dark: #1a1a1a;
+      --text-light: #f0f0f0;
+      --accent: #ff6b35;
+      --secondary: #004e89;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 10px rgba(114, 226, 43, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(114, 226, 43, 0.6);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+
+    /* ===== HEADER & HERO ===== */
+    header {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(114, 226, 43, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(0, 78, 137, 0.1) 0%, transparent 50%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 8vw, 5rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), #ff6b35);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: #bbb;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--text-dark);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 10px 30px rgba(114, 226, 43, 0.3);
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(114, 226, 43, 0.5);
+    }
+
+    .cta-button:active {
+      transform: translateY(-1px);
+    }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      height: 8px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      margin: 4rem 0;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    section.dark {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    }
+
+    section.light {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), #ff9233);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .section-subtitle {
+      font-size: 1.3rem;
+      color: #aaa;
+      text-align: center;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    /* ===== CARDS GRID ===== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(114, 226, 43, 0.05), rgba(0, 78, 137, 0.05));
+      border: 1px solid rgba(114, 226, 43, 0.2);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      animation: fadeInUp 0.8s ease-out;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(114, 226, 43, 0.2), transparent);
+      transition: left 0.5s ease;
+      z-index: 1;
+    }
+
+    .card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(114, 226, 43, 0.2);
+      transform: translateY(-10px);
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      position: relative;
+      z-index: 2;
+    }
+
+    .card p {
+      color: #ccc;
+      position: relative;
+      z-index: 2;
+      line-height: 1.8;
+    }
+
+    /* ===== IMAGE GALLERY ===== */
+    .image-section {
+      position: relative;
+      height: 400px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 3rem 0;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .image-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .image-section:hover img {
+      transform: scale(1.05);
+    }
+
+    /* ===== FEATURE LIST ===== */
+    .features-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(114, 226, 43, 0.05);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      animation: slideInLeft 0.6s ease-out;
+    }
+
+    .feature-item:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .feature-item:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .feature-item:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+
+    .feature-item:nth-child(5) {
+      animation-delay: 0.4s;
+    }
+
+    .feature-item:hover {
+      background: rgba(114, 226, 43, 0.1);
+      border-left-color: #ff6b35;
+      transform: translateX(10px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      min-width: 3rem;
+      text-align: center;
+      color: var(--primary);
+    }
+
+    .feature-text h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .feature-text p {
+      color: #aaa;
+      font-size: 0.95rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(114, 226, 43, 0.2);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+      color: #999;
+    }
+
+    footer .footer-title {
+      font-size: 1.3rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    footer .footer-subtitle {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      h1 {
+        margin-bottom: 1rem;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .image-section {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO SECTION -->
+  <header>
+    <img src="img/haus-tambaran.jpg" alt="Traditional Papua New Guinea village" class="hero-image" />
+    <div class="hero-content">
+      <h1>Papua New Guinea</h1>
+      <p class="subtitle">Over 800 Languages. One Extraordinary Nation.</p>
+      <button class="cta-button">Explore Landmarks</button>
+    </div>
+  </header>
+
+  <!-- INTRODUCTION SECTION -->
+  <section class="dark">
+    <h2 class="section-title">Cultural Heritage</h2>
+    <p class="section-subtitle">
+      Papua New Guinea is the most linguistically diverse country on Earth. Each of its communities carries
+      unique art forms, oral traditions, and ceremonial practices passed down through countless generations.
+      From the highland sing-sings to the coastal mask ceremonies, the cultural tapestry of PNG is as vast
+      and varied as its rainforests.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURES SECTION -->
+  <section class="light">
+    <h2 class="section-title">Importance of Landmarks</h2>
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-icon">🏛️</div>
+        <div class="feature-text">
+          <h4>Cultural Identity</h4>
+          <p>Landmarks often have spiritual or historical significance for local tribes, representing ancestors and traditions.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🧭</div>
+        <div class="feature-text">
+          <h4>Navigation & Geography</h4>
+          <p>Help in orientation across rugged terrains and diverse landscapes of Papua New Guinea.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🎫</div>
+        <div class="feature-text">
+          <h4>Tourism Development</h4>
+          <p>Iconic landmarks attract tourists, boosting local economies and promoting cultural exchange.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🌿</div>
+        <div class="feature-text">
+          <h4>Conservation & Heritage</h4>
+          <p>Help preserve natural and cultural heritage, fostering pride among local populations.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📚</div>
+        <div class="feature-text">
+          <h4>Education & Research</h4>
+          <p>Serve as educational sites for learning about PNG's diverse cultures and environment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- GALLERY SECTION -->
+  <section class="dark">
+    <h2 class="section-title">Notable Landmarks</h2>
+    <div class="image-section">
+      <img src="img/kokopo-museum.jpg" alt="Kokopo Museum - Cultural Heritage Site" />
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <h3>Kokoda Trail</h3>
+        <p>A historic trekking route with breathtaking views and significant World War II heritage. Offers adventure and historical insights into the past.</p>
+      </div>
+      <div class="card">
+        <h3>Mount Wilhelm</h3>
+        <p>The highest peak in PNG providing spectacular panoramic views and opportunities for challenging mountain climbing experiences.</p>
+      </div>
+      <div class="card">
+        <h3>Trobriand Islands</h3>
+        <p>Premier diving and water sports destination with pristine beaches and rich maritime culture from local communities.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ADVANTAGES SECTION -->
+  <section class="light">
+    <h2 class="section-title">Advantages for Travelers</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <h3>Natural Beauty</h3>
+        <p>Breathtaking landscapes and views provide unforgettable experiences and excellent photography opportunities.</p>
+      </div>
+      <div class="card">
+        <h3>Cultural Immersion</h3>
+        <p>Visitors can experience traditional dances, local communities, and learn authentic cultural practices firsthand.</p>
+      </div>
+      <div class="card">
+        <h3>Adventure Activities</h3>
+        <p>Trekking, diving, exploring rainforests, and engaging with pristine natural environments for thrill seekers.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-title">Cultural Landmarks of Papua New Guinea</p>
+    <p class="footer-subtitle">Celebrating the heritage and natural wonders of Melanesia</p>
+    <p style="margin-top: 2rem; font-size: 0.85rem; color: #555;">© 2026 Papua New Guinea Heritage Project</p>
+  </footer>
+</body>
+</html>
+          
+Cultural Landmarks of Papua New Guinea
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 
+          animate={{ opacity: 1, y: 0 
+          transition={{ duration: 0.8, delay: 0.5 
+          className="mt-6 max-w-xl text-lg font-light text-muted-foreground"
+        >
+          A journey through ancient traditions, sacred sites, and the living heritage of over 800 distinct cultures.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0 
+          animate={{ opacity: 1 
+          transition={{ duration: 1, delay: 1 
+          className="mt-12"
+        >
+          <div className="h-12 w-px bg-primary/40 mx-auto animate-pulse" >
+
+        </motion.div>
+      </div>
+    </section>
+  
+
+    </p>
+    <p className="mt-2 text-xs text-muted-foreground/60 font-body">
+
+    </p>
+  </footer>
+
+  
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 
+          whileInView={{ opacity: 1, y: 0 
+          viewport={{ once: true,margibn:
+          transition={{ duration: 0.7 
+          className="mb-16 text-center"
+        >
+          <p className="text-xs uppercase tracking-[0.3em] text-primary font-body mb-3">
+            Why They Matter
+          </p><h2 className="font-display text-4xl font-bold text-foreground md:text-5xl mb-6">
+            The Importance of PNG's Landmarks
+          </h2>
+Lnadmarks in Papua New Guinea are vital for preserving cultural heritage, commemorating history, supporting tourism, and fostering national identity.
+Cultural and Historical Significance
+Landmarks in PNG, such as traditional villages, sacred sites, and ancient rock art, provide a window into the country’s rich indigenous heritage and diverse cultural practices. They reflect the customs, beliefs, and social structures of over 800 distinct communities, offering insight into centuries-old traditions that have been preserved despite globalization. Historical landmarks, including war cemeteries like Bomana and Rabaul, commemorate the impact of World War II and colonial history, helping both locals and visitors understand the nation’s past. 
+earth-site.
+        </p><h2 className="font-display text-4xl font-bold text-foreground md:text-5xl mb-6">
+        </h2>
+Educational and Research Value:
+These sites serve as living classrooms for anthropologists, historians, and ecologists. For example, the Kokoda Trail not only provides a historical narrative of wartime events but also allows visitors to study the region’s unique ecosystems and biodiversity along the trek. Similarly, the Sepik River and Mount Wilhelm offer opportunities to explore ecological zones and traditional environmental practices. 
+Papua New Guinea Tourism
+        </p><h2 className="font-display text-4xl font-bold text-foreground md:text-5xl mb-6">
+        </h2>
+Tourism and Economic Impact:
+Landmarks are central to PNG’s tourism industry, attracting international visitors to sites like the Kokoda Track, Milne Bay Memorial, and Port Moresby’s cultural institutions. Tourism generates revenue, supports local communities, and encourages the preservation of cultural and natural heritage. By promoting these landmarks, PNG can sustain economic development while maintaining its unique identity. 
+Papua New Guinea Tourism
+        </p><h2 className="font-display text-4xl font-bold text-foreground md:text-5xl mb-6">
+        </h2>
+National Identity and Community Pride:
+Landmarks foster a sense of national pride and cultural continuity. Sacred sites, traditional villages, and historical memorials strengthen community cohesion and provide a tangible connection to ancestral heritage. They also serve as symbols of resilience and identity, reinforcing the importance of preserving PNG’s diverse cultural landscape for future generations. 
+earth-site.
+        </p><h2 className="font-display text-4xl font-bold text-foreground md:text-5xl mb-6">
+        </h2>
+         
+
+Environmental and Ecological Importance:
+Many natural landmarks, such as Mount Wilhelm and the Sepik River, are critical for biodiversity conservation. They support unique ecosystems and provide resources for local communities, highlighting the interconnectedness of cultural and environmental stewardship.
+        </p><h2 className="font-display text-4xl font-bold text-foreground md:text-5xl mb-6">
+        </h2>
+In summary, landmarks in Papua New Guinea are essential for cultural preservation, historical education, tourism, economic development, national identity, and environmental conservation, making their protection and promotion a priority for both local communities and the global community. 
+earth-site.
+        </p><h2 className="font-display text-4xl font-bold text-foreground md:text-5xl mb-6">
+        </h2>
+
+<img src="C:\Users\260152\Documents\JENNY\web\img\kuk-site.jpg" height="400rem" width="400rem" alt="kuk-site" class="w-full object-cover" />
+          
+<p className="text-muted-foreground font-body font-light text-lg leading-relaxed max-w-3xl mx-auto">
+            Papua New Guinea's cultural landmarks are far more than historical relics — they are
+            living institutions that sustain identity, ecology, and knowledge across generations.
+          </p>
+        </motion.div>
+
+        <div className="grid gap-8 sm:grid-cols-2">
+          
+            <motion.div
+              
+            >
+              <reason.icon className="h-8 w-8 text-primary mb-4" strokeWidth={1.5} />
+              
+              </p>
+            </motion.div>
+          
+        </div>
+    </section>
+  
+
+    
+      <div className="aspect-[3/4] overflow-hidden">
+
+    <h2 class="font-display text-4xl font-bold text-foreground md:text-5xl mb-6">     
+    </h2>
+
+        <img src="C:\Users\260152\Documents\JENNY\web\img\Mount-Wilhelm.jpg" height="400rem" width="400rem" alt="Traditional Paupa New Guinea village in lush highlands" class="w-full h-full object-coveer" />
+          
+        
+        
+      </div>
+      <div className="p-6">
+        <p className="text-xs uppercase tracking-[0.2em] text-primary font-body mb-2">
+        </p>
+        <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+
+        </h3>
+        <p className="text-sm leading-relaxed text-muted-foreground font-body font-light">
+
+        </p>
+      </div>
+    </motion.article>
+  
+
+
+  
+    
+      <div className="aspect-[3/4] overflow-hidden">
+        
+
+        
+      </div>
+      <div className="p-6">
+        <p className="text-xs uppercase tracking-[0.2em] text-primary font-body mb-2">
+
+        </p>
+        <h2 className="font-display text-4xl font-bold text-foreground mb:text-5xl mb-6">
+
+        </h2>
+        <p className="text-sm leading-relaxed text-muted-foreground font-body font-light">
+
+        </p>
+      </div>
+    </motion.article>
+  
+
+
+
+        <p className="text-xs uppercase tracking-[0.3em]import { NavLink as RouterNavLink, NavLinkProps } from "
+
+
+  
+  ({ className, activeClassName, pendingClassName, to, ...props }, ref) => 
+    
+      <RouterNavLink
+        ref={ref}
+        to={to}
+        className={({ isActive, isPending  =>
+          </p>
+        <h2 className="text-muted-foreground text-4xl font-body font-light text-lg leading-relaxed-w-3xl mx-auto">
+          Sacred Places
+        </h2>
+          Scared Places in PNG
+Papua New Guinea is not only rich in cultural heritage but also in haunted locations that promise to thrill and terrify. Here are some of the most haunted places in PNG:
+
+
+<h2 className="text-muted-foreground text-4xl font-body font-light text-lg leading-relaxed-w-3xl mx-auto">
+
+Kokoda Trail: A historic battlefield from World War II, known for ghostly encounters of lost soldiers. 
+Bomana War Cemetery: The largest war cemetery in the Pacific, where visitors have reported feeling an overwhelming sense of sorrow and despair. 
+Asaro Mudmen: The legendary Asaro Mudmen, who costumed themselves as spirits to escape from a fierce tribal war, now serve as a celebrated attraction in the Eastern Highlands. 
+Wii Towai Waterfall: A sacred site protected by the Nauro tribe, where the Wii Towai tribe performs cultural displays under the name “Wii Towai Singsing Group.” 
+
+
+These locations offer a unique blend of history, culture, and the supernatural, making them must-visit spots for those seeking an adrenaline rush and a deeper understanding of Papua New Guinea's rich tapestry.
+      </motion.div>
+
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      
+          <LandmarkCard key={landmark.title} {...landmark} index={i} />
+        
+      </div>
+    </section>
+  
